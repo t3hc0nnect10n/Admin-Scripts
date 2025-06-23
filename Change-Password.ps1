@@ -250,7 +250,14 @@ function ConvertTo-UnsecureString() {
 		[SecureString]$secStr
 	)
 	
-	return [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($secStr))
+	$BSTR = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secStr)
+    
+	return [Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+    
+	# Очищаем неуправляемую память по завершению.
+	[System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($BSTR)
+
+	Clear-Variable -Name "BSTR"
 }
 
 # 3. Функция проверки плохого пароля.
