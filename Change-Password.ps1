@@ -67,7 +67,7 @@ $Form.TopMost          = $True
 $Form.BackColor        = [System.Drawing.ColorTranslator]::FromHtml("#8dbbf3")
 
 # Полный путь к изображению.
-$ImagePath             = "\\tk.local\SysVol\tk.local\Policies\{7E2CBF75-26A0-403F-BBEF-B3F82E645289}\User\logo_tradicia_GK.png"
+$ImagePath             = "<Укажите полный путь к картинке в формате PNG>"
 
 # Параметры изображения в форме.
 $Image                 = [System.Drawing.Image]::FromFile($ImagePath)
