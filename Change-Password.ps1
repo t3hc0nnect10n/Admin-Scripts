@@ -445,10 +445,12 @@ function Password-Change() {
                 default      { $msg = "$($default)."                                                           } # default
             }
 
-            # Устанавливаем текст ошибки.
-            $StatusLabel0.Text = "❌"
-            $StatusLabel1.Text = "$(Split-StringByWords -Text $msg)"
-
+			if ($msg -ne $null) {
+            	# Устанавливаем текст ошибки.
+            	$StatusLabel0.Text = "❌"
+            	$StatusLabel1.Text = "$(Split-StringByWords -Text $msg)"
+			}
+			
             # Очищаем переменные оn ранее полученных значений.
             Clear-Variable -Name "OldPassworrd" -ErrorAction SilentlyContinue
             Clear-Variable -Name "NewPassword" -ErrorAction SilentlyContinue
